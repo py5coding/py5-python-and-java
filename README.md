@@ -47,9 +47,9 @@ public class Py5Utilities {
 }
 ```
 
-The main idea is that any methods added to this Java `Py5Utilities` class will be made available to you through the `py5.utils` attribute. Use of this feature can greatly enhance the performance and capabilities of your py5 Sketch code.
+The main idea is that any methods added to this Java `Py5Utilities` class will be made available to you through the `py5.utils` attribute. Use of this feature can greatly enhance the performance and capabilities of your py5 Python code.
 
-[Hybrid Programming is documented on py5's website.](http://py5coding.org/content/hybrid_programming.html)
+[Hybrid Programming](http://py5coding.org/content/hybrid_programming.html) is documented on py5's website.
 
 ## Processing Mode
 
@@ -119,7 +119,7 @@ py5.run_sketch(jclassname='test.Example1Sketch')
 
 The main idea is for py5 to provide Processing users with efficient access to the Python Ecosystem. Calls to `callPython()` in Java are linked to Python through registered "keys" that map to Python functions, callables, and modules.
 
-[Processing Mode is documented on py5's website.](http://py5coding.org/content/processing_mode.html)
+[Processing Mode](http://py5coding.org/content/processing_mode.html) is documented on py5's website.
 
 ## Example Code Setup
 
