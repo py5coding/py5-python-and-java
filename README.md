@@ -4,6 +4,8 @@ This repo contains example code for those looking to experiment with py5's hybri
 
 ## What is py5?
 
+py5 is a version of [**Processing**][processing] for Python 3.8+. It makes the Java [**Processing**][processing] jars available to the CPython interpreter using [**JPype**][jpype]. It can do just about all of the 2D and 3D drawing [**Processing**][processing] can do, except with Python instead of Java code.
+
 ## Hybrid Programming
 
 Hybrid Programming refers to py5’s ability to augment your py5 Sketch with Java code. This is very much like creating custom Processing extensions to enhance py5.
@@ -123,3 +125,5 @@ The main idea is for py5 to provide Processing users with efficient access to th
 
 ## Example Code Setup
 
+[processing]: https://github.com/processing/processing4
+[jpype]: https://github.com/jpype-project/jpype
