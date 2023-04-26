@@ -1,6 +1,6 @@
 # py5 Hybrid Programming & Processing Mode Example Code
 
-This repo contains example code for those looking to experiment with py5's hybrid programming and processing mode functionality.
+This repo contains example code for those looking to experiment with py5's Hybrid Programming and Processing Mode functionality. Both Hybrid Programming and Processing Mode allow you to combine Python and Processing code in new and exciting ways.
 
 ## What is py5?
 
@@ -156,6 +156,15 @@ If you know more about Maven and have a better idea of how to organize this aspe
 ### Experiment With Example Code
 
 Once your IDE and environment are setup correctly, start experimenting with what you can do with py5's Hybrid Programming and Processing Mode. Share your creations with us in [py5's GitHub discussions][py5_github_discussions] or on social media with the hashtag `#py5`.
+
+## Get In Touch
+
+Have a comment or question? We'd love to hear from you! The best ways to reach out are:
+
+* github [discussions](https://github.com/py5coding/py5generator/discussions) and [issues](https://github.com/py5coding/py5generator/issues)
+* Mastodon <a rel="me" href="https://fosstodon.org/@py5coding">fosstodon.org/@py5coding</a>
+* twitter [@py5coding](https://twitter.com/py5coding)
+* [processing foundation discourse](https://discourse.processing.org/)
 
 [py5_github_discussions]: https://github.com/py5coding/py5generator/discussions
 [processing]: https://github.com/processing/processing4
