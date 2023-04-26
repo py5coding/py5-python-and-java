@@ -1,0 +1,17 @@
+name: py5hybrid
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - cairo
+  - cairosvg
+  - jpype1
+  - jupyterlab
+  - line_profiler
+  - matplotlib
+  # - maven  # don't install maven through Anaconda!
+  - numpy
+  - pillow
+  - pip
+  - pip:
+      - py5[jupyter]
