@@ -125,5 +125,36 @@ The main idea is for py5 to provide Processing users with efficient access to th
 
 ## Example Code Setup
 
+Here's how to use this GitHub repo.
+
+### Create Anaconda Environment
+
+If you have [Anaconda][anaconda] or [Miniconda][miniconda] installed, you can create the Anaconda environment with this command:
+
+```bash
+conda env create -f environment.yml
+```
+
+This will install py5 and some libraries used in the example code.
+
+### Install Maven
+
+You will need to [install Maven](https://maven.apache.org/install.html) if you wish to edit and compile the example Java code. This repo provides compiled Jars for those who get tripped up by this step.
+
+Theoretically you can install Maven through Anaconda but installing it that way didn't work during our tests so it is not recommended.
+
+### Explore Code in IDE
+
+Before proceeding, you should confirm that your IDE recognizes the Java projects in this repo. The Maven configuration files, `pom.xml`, link to the necessary Jar files using system paths. The configuration files also depend on the Anaconda environment variable `CONDA_PREFIX`. If you are not using Anaconda, the environment variable `CONDA_PREFIX` will not be defined. If you are using VSCode, you will need to use the palette command "Python: Select Interpreter" to select the Python interpreter for your environment.
+
+The Jar files are located in the Jars that come with your py5 installation. If you are not using an Anaconda environment or you deviated from the provided `environment.yml` file, you will probably need to alter the `pom.xml` files.
+
+Check the `pom.xml` files carefully if your IDE is not recognizing or properly compiling the Java code.
+
+If you know more about Maven and have a better idea of how to organize this repo, please tell us about it in [py5's GitHub discussions](https://github.com/py5coding/py5generator/discussions).
+
 [processing]: https://github.com/processing/processing4
 [jpype]: https://github.com/jpype-project/jpype
+
+[anaconda]: https://docs.anaconda.com/anaconda/install/
+[miniconda]: https://conda.io/projects/conda/en/stable/user-guide/install/index.html
