@@ -10,7 +10,7 @@ points_buffer = jpype.nio.convertToDirectBuffer(bytearray(4 * N * 2)).asFloatBuf
 byte_buffer = jpype.nio.convertToDirectBuffer(bytearray(4 * N))
 colors_buffer = byte_buffer.asIntBuffer()
 
-# create numpy arrays backed by Direct Buffers
+# create numpy arrays backed by the Direct Buffers
 colors = np.asarray(byte_buffer).reshape(N, 4)
 points = np.asarray(points_buffer).reshape(N, 2)
 
