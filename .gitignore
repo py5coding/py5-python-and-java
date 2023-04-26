@@ -1,0 +1,10 @@
+*.nogit
+.*.nogit
+.vscode
+*.pyc
+__pycache__/
+temp/
+build/
+dist/
+target/
+# !*.jar
