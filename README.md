@@ -119,7 +119,7 @@ py5_tools.register_processing_mode_key('np', np)
 py5.run_sketch(jclassname='test.Example1Sketch')
 ```
 
-The main idea is for py5 to provide Processing users with efficient access to the Python Ecosystem. Calls to `callPython()` in Java are linked to Python through registered "keys" that map to Python functions, callables, and modules.
+The main idea is for py5 to provide Processing users with efficient access to the Python Ecosystem. Calls to `callPython()` in Java are linked to Python through registered "keys" that map to Python functions and modules.
 
 [Processing Mode](http://py5coding.org/content/processing_mode.html) is documented on py5's website.
 
@@ -139,9 +139,9 @@ This will install py5 and some libraries used in the example code.
 
 ### Install Maven
 
-You will need to [install Maven](https://maven.apache.org/install.html) if you wish to edit and compile the example Java code. This repo provides compiled Jars for those who get tripped up by this step.
+You will need to [install Maven](https://maven.apache.org/install.html) if you wish to edit and compile the example Java code. This repo provides compiled Jars for those who have difficulty with this step.
 
-Theoretically you can install Maven through Anaconda but installing it that way didn't work during our tests so it is not recommended.
+Theoretically you can install Maven through Anaconda but installing it that way didn't work during my tests so it is not recommended.
 
 ### Explore Code in IDE
 
@@ -151,8 +151,13 @@ The Jar files are located in the Jars that come with your py5 installation. If y
 
 Check the `pom.xml` files carefully if your IDE is not recognizing or properly compiling the Java code.
 
-If you know more about Maven and have a better idea of how to organize this repo, please tell us about it in [py5's GitHub discussions](https://github.com/py5coding/py5generator/discussions).
+If you know more about Maven and have a better idea of how to organize this aspect of this repo, please tell us about it in [py5's GitHub discussions][py5_github_discussions].
 
+### Experiment With Example Code
+
+Once your IDE and environment are setup correctly, start experimenting with what you can do with py5's Hybrid Programming and Processing Mode. Share your creations with us in [py5's GitHub discussions][py5_github_discussions] or on social media with the hashtag `#py5`.
+
+[py5_github_discussions]: https://github.com/py5coding/py5generator/discussions
 [processing]: https://github.com/processing/processing4
 [jpype]: https://github.com/jpype-project/jpype
 
