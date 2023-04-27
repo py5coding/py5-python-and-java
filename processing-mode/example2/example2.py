@@ -38,6 +38,8 @@ class Test:
             return JClass('java.lang.RuntimeException')(str(e))
 
 
+# register processing mode keys so the Java `callPython()` method can find them
 py5_tools.register_processing_mode_key('setup_test_interface', lambda: Test())
 
+# run the sketch in processing mode, specifying the Java class to instantiate
 py5.run_sketch(jclassname='test.Example2Sketch')

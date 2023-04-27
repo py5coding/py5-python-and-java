@@ -15,7 +15,9 @@ def alter_image(msg: str, img: py5.Py5Image):
     return img
 
 
+# register processing mode keys so the Java `callPython()` method can find them
 py5_tools.register_processing_mode_key('test_transfer', alter_image)
 py5_tools.register_processing_mode_key('np', np)
 
+# run the sketch in processing mode, specifying the Java class to instantiate
 py5.run_sketch(jclassname='test.Example1Sketch')

@@ -10,14 +10,14 @@ public class Example1Sketch extends SketchBase {
   }
 
   public void setup() {
-    rectMode(CENTER);
-
     String msg = "Hello from Java!";
     PImage img = createImage(200, 200, RGB);
 
+    // call Python function `alter_image(msg, img)` and get back a PImage
     PImage imgResponse = (PImage) callPython("test_transfer", msg, img);
     image(imgResponse, 100, 100);
 
+    // call numpy `random.randint()` function
     long randomNumber = (long) callPython("np.random.randint", 0, 100);
     py5Println("JAVA: Random number from numpy: " + randomNumber);
   }
