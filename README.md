@@ -75,14 +75,14 @@ public class Example1Sketch extends SketchBase {
   }
 
   public void setup() {
-    rectMode(CENTER);
-
     String msg = "Hello from Java!";
     PImage img = createImage(200, 200, RGB);
 
+    // call Python function `alter_image(msg, img)` and get back a PImage
     PImage imgResponse = (PImage) callPython("test_transfer", msg, img);
     image(imgResponse, 100, 100);
 
+    // call numpy `random.randint()` function
     long randomNumber = (long) callPython("np.random.randint", 0, 100);
     py5Println("JAVA: Random number from numpy: " + randomNumber);
   }
@@ -116,9 +116,11 @@ def alter_image(msg: str, img: py5.Py5Image):
     return img
 
 
+# register processing mode keys so the Java `callPython()` method can find them
 py5_tools.register_processing_mode_key('test_transfer', alter_image)
 py5_tools.register_processing_mode_key('np', np)
 
+# run the sketch in processing mode, specifying the Java class to instantiate
 py5.run_sketch(jclassname='test.Example1Sketch')
 ```
 
