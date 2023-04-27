@@ -46,4 +46,4 @@ public class Py5Utilities {
 }
 ```
 
-The main idea is that any methods added to this Java `Py5Utilities` class will be made available to you through the `py5.utils` attribute. Use of this feature can greatly enhance the performance and capabilities of your py5 Python code. Refer to the [Hybrid Programming](http://py5coding.org/content/hybrid_programming.html) documentation to learn more.
+The main idea is that any methods added to this Java `Py5Utilities` class will be made available to you through the `py5.utils` attribute. Use of this feature can greatly enhance the performance and capabilities of your py5 Python code. Refer to the online [Hybrid Programming](http://py5coding.org/content/hybrid_programming.html) documentation to learn more.
