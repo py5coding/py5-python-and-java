@@ -78,7 +78,7 @@ public class Example1Sketch extends SketchBase {
     String msg = "Hello from Java!";
     PImage img = createImage(200, 200, RGB);
 
-    // call Python function `alter_image(msg, img)` and get back a PImage
+    // call Python function `alter_image(msg, img)` and get back a PImage object
     PImage imgResponse = (PImage) callPython("test_transfer", msg, img);
     image(imgResponse, 100, 100);
 
