@@ -19,11 +19,14 @@ public class Py5Utilities {
   }
 
   public void shareBuffers(IntBuffer colors, FloatBuffer points) {
+    // share the direct buffers created with Python code
     this.colors = colors;
     this.points = points;
   }
 
   public void drawColoredPoints() {
+    // iterate through the colors and points direct buffers to draw
+    // multicolored points
     sketch.pushStyle();
     sketch.beginShape(Sketch.POINTS);
     for (int i = 0; i < colors.capacity() / 3; i++) {

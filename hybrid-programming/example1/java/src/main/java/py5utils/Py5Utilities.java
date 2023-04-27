@@ -7,10 +7,13 @@ public class Py5Utilities {
   public Sketch sketch;
 
   public Py5Utilities(Sketch sketch) {
+    // This constructor is called before the sketch starts running. DO NOT use
+    // Processing methods here, as they may not work correctly.
     this.sketch = sketch;
   }
 
   public void drawColoredPoints(int[][] colors, float[][] coords) {
+    // iterate through the colors and coords arrays to draw multicolored points
     sketch.pushStyle();
     sketch.beginShape(Sketch.POINTS);
     for (int i = 0; i < colors.length; i++) {
