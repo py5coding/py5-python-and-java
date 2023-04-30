@@ -3,8 +3,9 @@
 # 
 # In this adaptation of Dan Shiffman's Flocking example, the boids are
 # repeatedly clustered using the KMeans algorithm from scikit-learn. Each Boid
-# will ignore Boids in other clusters. The cluster labels are used to give the
-# boids in each cluster a unique color.
+# will ignore Boids in other clusters, but each Boid will also change cluster
+# membership over time. The cluster labels are used to give the boids in each
+# cluster a unique color.
 # 
 # An implementation of Craig Reynold's Boids program to simulate
 # the flocking behavior of birds. Each boid steers itself based on
