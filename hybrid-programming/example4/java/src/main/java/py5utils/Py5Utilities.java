@@ -16,6 +16,15 @@ public class Py5Utilities {
   public PShape createTorus(float radius, float tube, int radialSegments, int tubularSegments) {
     // Torus geometry algorithm adapted from Three.js (https://threejs.org/).
     // https://github.com/mrdoob/three.js/blob/dev/src/geometries/TorusGeometry.js
+
+    // create lookup tables
+    float thetaCosLUT[] = new float[tubularSegments + 1];
+    float thetaSinLUT[] = new float[tubularSegments + 1];
+    for (int j = 0; j <= tubularSegments; j++) {
+      thetaCosLUT[j] = Sketch.cos(j * Sketch.TWO_PI / tubularSegments);
+      thetaSinLUT[j] = Sketch.sin(j * Sketch.TWO_PI / tubularSegments);
+    }
+
     float vertices[][] = new float[(radialSegments + 1) * (tubularSegments + 1)][3];
     for (int i = 0; i <= radialSegments; i++) {
       float phi = i * Sketch.TWO_PI / radialSegments;
@@ -23,10 +32,8 @@ public class Py5Utilities {
       float cos_phi = Sketch.cos(phi);
 
       for (int j = 0; j <= tubularSegments; j++) {
-        float theta = j * Sketch.TWO_PI / tubularSegments;
-
-        vertices[i * (tubularSegments + 1) + j][0] = (radius + tube * cos_phi) * Sketch.cos(theta);
-        vertices[i * (tubularSegments + 1) + j][1] = (radius + tube * cos_phi) * Sketch.sin(theta);
+        vertices[i * (tubularSegments + 1) + j][0] = (radius + tube * cos_phi) * thetaCosLUT[j];
+        vertices[i * (tubularSegments + 1) + j][1] = (radius + tube * cos_phi) * thetaSinLUT[j];
         vertices[i * (tubularSegments + 1) + j][2] = tube * sin_phi;
       }
     }
