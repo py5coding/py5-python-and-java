@@ -18,13 +18,16 @@ public class Py5Utilities {
     // https://github.com/mrdoob/three.js/blob/dev/src/geometries/TorusGeometry.js
     float vertices[][] = new float[(radialSegments + 1) * (tubularSegments + 1)][3];
     for (int i = 0; i <= radialSegments; i++) {
+      float phi = i * Sketch.TWO_PI / radialSegments;
+      float sin_phi = Sketch.sin(phi);
+      float cos_phi = Sketch.cos(phi);
+
       for (int j = 0; j <= tubularSegments; j++) {
         float theta = j * Sketch.TWO_PI / tubularSegments;
-        float phi = i * Sketch.TWO_PI / radialSegments;
 
-        vertices[i * (tubularSegments + 1) + j][0] = (radius + tube * Sketch.cos(phi)) * Sketch.cos(theta);
-        vertices[i * (tubularSegments + 1) + j][1] = (radius + tube * Sketch.cos(phi)) * Sketch.sin(theta);
-        vertices[i * (tubularSegments + 1) + j][2] = tube * Sketch.sin(phi);
+        vertices[i * (tubularSegments + 1) + j][0] = (radius + tube * cos_phi) * Sketch.cos(theta);
+        vertices[i * (tubularSegments + 1) + j][1] = (radius + tube * cos_phi) * Sketch.sin(theta);
+        vertices[i * (tubularSegments + 1) + j][2] = tube * sin_phi;
       }
     }
 
