@@ -160,7 +160,7 @@ If you know more about Maven and have a better idea of how to organize this aspe
 
 ### Experiment With Example Code
 
-Once your IDE and environment are setup correctly, start experimenting with what you can do with py5's Hybrid Programming and Processing Mode. Share your creations with us in [py5's GitHub discussions][py5_github_discussions] or on social media with the hashtag `#py5`.
+Once your IDE and environment are setup correctly, start experimenting with what you can do with py5's Hybrid Programming and Processing Mode. Share your creations with us in [py5's GitHub discussions][py5_github_discussions] or on social media with the hashtag `#py5`. If something is confusing to you, please let us know! We are happy to add more examples to make any of these concepts more clear.
 
 ## Get In Touch
 
