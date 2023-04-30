@@ -66,7 +66,6 @@ public class Example3Sketch extends SketchBase {
       float[][] boidLocations = flock.getBoidLocations();
       int[] boidClusterLabels = (int[]) callPython("cluster_boids", (Object) boidLocations);
       flock.setBoidClusterLabels(boidClusterLabels);
-      delay(1000);
     }
   }
 
