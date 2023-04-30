@@ -15,4 +15,5 @@ dependencies:
   - pip
   - scikit-learn
   - pip:
+      - opencv-contrib-python
       - py5[jupyter]
