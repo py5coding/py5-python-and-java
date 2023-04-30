@@ -14,7 +14,7 @@ public class Py5Utilities {
   }
 
   public PShape createTorus(float radius, float tube, int radialSegments, int tubularSegments) {
-    // Torus algorithm adapted from Three.js (https://threejs.org/).
+    // Torus geometry algorithm adapted from Three.js (https://threejs.org/).
     // https://github.com/mrdoob/three.js/blob/dev/src/geometries/TorusGeometry.js
     float vertices[][] = new float[(radialSegments + 1) * (tubularSegments + 1)][3];
     for (int i = 0; i <= radialSegments; i++) {

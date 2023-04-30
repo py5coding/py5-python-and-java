@@ -1,6 +1,14 @@
+# Draw Torus Example
+#
+# Torus geometry algorithm adapted from Three.js (https://threejs.org/).
+# https://github.com/mrdoob/three.js/blob/dev/src/geometries/TorusGeometry.js
+
 import py5
 
-from peasy import PeasyCam
+# Import the PeasyCam library (a Java library, not a Python library)
+# PeasyCam was created by Jonathan Feinberg (https://mrfeinberg.com/peasycam/)
+# JPype lets you import Java libraries into Python as you would import a Python library
+from peasy import PeasyCam  # type: ignore
 
 
 torus = None
