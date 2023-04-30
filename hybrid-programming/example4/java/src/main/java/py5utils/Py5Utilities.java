@@ -25,6 +25,7 @@ public class Py5Utilities {
       thetaSinLUT[j] = Sketch.sin(j * Sketch.TWO_PI / tubularSegments);
     }
 
+    // calculate coordinates of vertices
     float vertices[][] = new float[(radialSegments + 1) * (tubularSegments + 1)][3];
     for (int i = 0; i <= radialSegments; i++) {
       float phi = i * Sketch.TWO_PI / radialSegments;
@@ -38,6 +39,7 @@ public class Py5Utilities {
       }
     }
 
+    // use vertices to create torus
     PShape torus = sketch.createShape();
     torus.beginShape(Sketch.QUADS);
     for (int i = 1; i <= radialSegments; i++) {
