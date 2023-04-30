@@ -6,6 +6,11 @@ import py5.core.SketchBase;
  * Flocking + Clustering
  * original Flocking Sketch by Daniel Shiffman.
  * 
+ * In this adaptation of Dan Shiffman's Flocking example code, the boids are
+ * repeatedly clustered using the KMeans algorithm from scikit-learn. The
+ * cluster labels are then used to give the boids in each cluster a unique
+ * color.
+ * 
  * An implementation of Craig Reynold's Boids program to simulate
  * the flocking behavior of birds. Each boid steers itself based on
  * rules of avoidance, alignment, and coherence.
@@ -39,6 +44,10 @@ public class Example3Sketch extends SketchBase {
     for (int i = 0; i < 150; i++) {
       flock.addBoid(new Boid(this, clusterColorsLUT, this.random(width), this.random(height)));
     }
+
+    // start a thread to repeatedly cluster the boids. a thread is used here
+    // because the clustering algorithm would slow down the draw() method and
+    // reduce the frame rate to a crawl.
     thread("runClustering");
   }
 
