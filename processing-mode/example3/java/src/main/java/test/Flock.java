@@ -8,18 +8,33 @@ class Flock {
 
   protected ArrayList<Boid> boids; // An ArrayList for all the boids
 
-  Flock() {
+  public Flock() {
     boids = new ArrayList<Boid>(); // Initialize the ArrayList
   }
 
-  void run() {
+  protected void run() {
     for (Boid b : boids) {
       b.run(boids); // Passing the entire list of boids to each boid individually
     }
   }
 
-  void addBoid(Boid b) {
+  protected void addBoid(Boid b) {
     boids.add(b);
+  }
+
+  protected float[][] getBoidLocations() {
+    float[][] boidsArray = new float[boids.size()][2];
+    for (int i = 0; i < boids.size(); i++) {
+      boidsArray[i][0] = boids.get(i).position.x;
+      boidsArray[i][1] = boids.get(i).position.y;
+    }
+    return boidsArray;
+  }
+
+  public void setBoidGroupIds(int[] boidGroupIds) {
+    for (int i = 0; i < boids.size(); i++) {
+      boids.get(i).setGroupID(boidGroupIds[i]);
+    }
   }
 
 }

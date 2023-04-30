@@ -14,11 +14,12 @@ class Boid {
   protected PVector position;
   protected PVector velocity;
   protected PVector acceleration;
+  protected int groupID;
   protected float r;
   protected float maxforce; // Maximum steering force
   protected float maxspeed; // Maximum speed
 
-  Boid(SketchBase sketch, float x, float y) {
+  public Boid(SketchBase sketch, float x, float y) {
     this.sketch = sketch;
     acceleration = new PVector(0, 0);
 
@@ -35,20 +36,24 @@ class Boid {
     maxforce = 0.03f;
   }
 
-  void run(ArrayList<Boid> boids) {
+  public void setGroupID(int groupID) {
+    this.groupID = groupID;
+  }
+
+  public void run(ArrayList<Boid> boids) {
     flock(boids);
     update();
     borders();
     render();
   }
 
-  void applyForce(PVector force) {
+  protected void applyForce(PVector force) {
     // We could add mass here if we want A = F / M
     acceleration.add(force);
   }
 
   // We accumulate a new acceleration each time based on three rules
-  void flock(ArrayList<Boid> boids) {
+  protected void flock(ArrayList<Boid> boids) {
     PVector sep = separate(boids); // Separation
     PVector ali = align(boids); // Alignment
     PVector coh = cohesion(boids); // Cohesion
@@ -63,7 +68,7 @@ class Boid {
   }
 
   // Method to update position
-  void update() {
+  protected void update() {
     // Update velocity
     velocity.add(acceleration);
     // Limit speed
@@ -75,7 +80,7 @@ class Boid {
 
   // A method that calculates and applies a steering force towards a target
   // STEER = DESIRED MINUS VELOCITY
-  PVector seek(PVector target) {
+  protected PVector seek(PVector target) {
     PVector desired = PVector.sub(target, position); // A vector pointing from the position to the target
     // Scale to maximum speed
     desired.normalize();
@@ -92,7 +97,7 @@ class Boid {
     return steer;
   }
 
-  void render() {
+  protected void render() {
     // Draw a triangle rotated in the direction of velocity
     float theta = velocity.heading() + SketchBase.radians(90);
 
@@ -110,7 +115,7 @@ class Boid {
   }
 
   // Wraparound
-  void borders() {
+  protected void borders() {
     if (position.x < -r)
       position.x = sketch.width + r;
     if (position.y < -r)
@@ -123,7 +128,7 @@ class Boid {
 
   // Separation
   // Method checks for nearby boids and steers away
-  PVector separate(ArrayList<Boid> boids) {
+  protected PVector separate(ArrayList<Boid> boids) {
     float desiredseparation = 25.0f;
     PVector steer = new PVector(0, 0, 0);
     int count = 0;
@@ -164,13 +169,15 @@ class Boid {
 
   // Alignment
   // For every nearby boid in the system, calculate the average velocity
-  PVector align(ArrayList<Boid> boids) {
-    float neighbordist = 50;
+  protected PVector align(ArrayList<Boid> boids) {
     PVector sum = new PVector(0, 0);
     int count = 0;
     for (Boid other : boids) {
+      if (other.groupID != groupID) {
+        continue;
+      }
       float d = PVector.dist(position, other.position);
-      if ((d > 0) && (d < neighbordist)) {
+      if (d > 0) {
         sum.add(other.velocity);
         count++;
       }
@@ -196,13 +203,15 @@ class Boid {
   // Cohesion
   // For the average position (i.e. center) of all nearby boids, calculate
   // steering vector towards that position
-  PVector cohesion(ArrayList<Boid> boids) {
-    float neighbordist = 50;
+  protected PVector cohesion(ArrayList<Boid> boids) {
     PVector sum = new PVector(0, 0); // Start with empty vector to accumulate all positions
     int count = 0;
     for (Boid other : boids) {
+      if (other.groupID != groupID) {
+        continue;
+      }
       float d = PVector.dist(position, other.position);
-      if ((d > 0) && (d < neighbordist)) {
+      if (d > 0) {
         sum.add(other.position); // Add position
         count++;
       }
@@ -214,4 +223,5 @@ class Boid {
       return new PVector(0, 0);
     }
   }
+
 }

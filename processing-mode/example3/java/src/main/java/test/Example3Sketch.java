@@ -38,4 +38,5 @@ public class Example3Sketch extends SketchBase {
   public void mousePressed() {
     flock.addBoid(new Boid(this, mouseX, mouseY));
   }
+
 }
