@@ -136,6 +136,10 @@ class Boid {
     int count = 0;
     // For every boid in the system, check if it's too close
     for (Boid other : boids) {
+      // ignore boids in other clusters
+      if (other.clusterLabel != clusterLabel) {
+        continue;
+      }
       float d = PVector.dist(position, other.position);
       // If the distance is greater than 0 and less than an arbitrary amount (0 when
       // you are yourself)
