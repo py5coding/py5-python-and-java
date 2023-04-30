@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>py5</groupId>
+  <artifactId>py5-processing-mode-example4</artifactId>
+  <version>0.1</version>
+
+  <name>py5-processing-mode-example4</name>
+  <url>https://py5coding.org/</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <jarlocation>${env.CONDA_PREFIX}/lib/python3.10/site-packages/py5/jars</jarlocation>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>py5</groupId>
+      <artifactId>py5-processing4</artifactId>
+      <version>0.9.0.dev0</version>
+      <scope>system</scope>
+      <systemPath>${jarlocation}/core.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>py5</groupId>
+      <artifactId>py5-jogl</artifactId>
+      <version>0.9.0.dev0</version>
+      <scope>system</scope>
+      <systemPath>${jarlocation}/jogl-all.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>py5</groupId>
+      <artifactId>py5</artifactId>
+      <version>0.9.0.dev0</version>
+      <scope>system</scope>
+      <systemPath>${jarlocation}/py5.jar</systemPath>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <id>copy</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <artifactItems>
+            <artifactItem>
+              <groupId>py5</groupId>
+              <artifactId>py5-processing-mode-example4</artifactId>
+              <version>0.1</version>
+              <type>jar</type>
+              <overWrite>true</overWrite>
+              <outputDirectory>${project.basedir}/../jars</outputDirectory>
+              <destFileName>py5-processing-mode-example4.jar</destFileName>
+            </artifactItem>
+          </artifactItems>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
