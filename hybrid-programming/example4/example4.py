@@ -1,5 +1,7 @@
 import py5
 
+from peasy import PeasyCam
+
 
 torus = None
 
@@ -8,7 +10,9 @@ def setup():
     py5.size(500, 500, py5.P3D)
     py5.smooth(4)
 
-    torus = py5.utils.createTorus(200, 25, 20, 40)
+    cam = PeasyCam(py5.get_current_sketch(), 500)
+
+    torus = py5.utils.createTorus(200, 40, 20, 50)
 
     py5.stroke(0)
     py5.stroke_weight(3)
@@ -17,7 +21,6 @@ def setup():
 
 def draw():
     py5.background(128)
-    py5.translate(py5.width / 2, py5.height / 2, 0)
     py5.shape(torus)
 
 
