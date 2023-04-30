@@ -102,7 +102,18 @@ class Boid {
     float theta = velocity.heading() + SketchBase.radians(90);
 
     sketch.fill(200, 100);
-    sketch.stroke(255);
+
+    // TODO: this needs some work
+    if (groupID == 0) {
+      sketch.stroke(255, 0, 0);
+    } else if (groupID == 1) {
+      sketch.stroke(0, 255, 0);
+    } else if (groupID == 2) {
+      sketch.stroke(0, 0, 255);
+    } else {
+      sketch.stroke(255);
+    }
+
     sketch.pushMatrix();
     sketch.translate(position.x, position.y);
     sketch.rotate(theta);

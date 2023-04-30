@@ -25,8 +25,9 @@ public class Example3Sketch extends SketchBase {
     flock = new Flock();
     // Add an initial set of boids into the system
     for (int i = 0; i < 150; i++) {
-      flock.addBoid(new Boid(this, width / 2, height / 2));
+      flock.addBoid(new Boid(this, this.random(width), this.random(height)));
     }
+    thread("runClustering");
   }
 
   public void draw() {
@@ -37,6 +38,15 @@ public class Example3Sketch extends SketchBase {
   // Add a new boid into the System
   public void mousePressed() {
     flock.addBoid(new Boid(this, mouseX, mouseY));
+  }
+
+  public void runClustering() {
+    while (true) {
+      float[][] boidLocations = flock.getBoidLocations();
+      int[] boidGroupIds = (int[]) callPython("cluster_boids", (Object) boidLocations);
+      flock.setBoidGroupIds(boidGroupIds);
+      delay(1000);
+    }
   }
 
 }
