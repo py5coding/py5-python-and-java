@@ -13,5 +13,6 @@ dependencies:
   - numpy
   - pillow
   - pip
+  - scikit-learn
   - pip:
       - py5[jupyter]
