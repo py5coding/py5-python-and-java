@@ -1,7 +1,3 @@
-package test;
-
-import py5.core.SketchBase;
-
 /**
  * Flocking + Clustering
  * original Flocking Sketch by Daniel Shiffman.
@@ -18,6 +14,10 @@ import py5.core.SketchBase;
  * 
  * Click the mouse to add a new boid.
  */
+
+package test;
+
+import py5.core.SketchBase;
 
 public class Example3Sketch extends SketchBase {
 
