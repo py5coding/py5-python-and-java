@@ -14,13 +14,15 @@ class Boid {
   protected PVector position;
   protected PVector velocity;
   protected PVector acceleration;
-  protected int groupID;
+  protected int clusterLabel;
+  protected int[] clusterColorsLUT;
   protected float r;
   protected float maxforce; // Maximum steering force
   protected float maxspeed; // Maximum speed
 
-  public Boid(SketchBase sketch, float x, float y) {
+  public Boid(SketchBase sketch, int[] clusterColorsLUT, float x, float y) {
     this.sketch = sketch;
+    this.clusterColorsLUT = clusterColorsLUT;
     acceleration = new PVector(0, 0);
 
     // This is a new PVector method not yet implemented in JS
@@ -36,8 +38,8 @@ class Boid {
     maxforce = 0.03f;
   }
 
-  public void setGroupID(int groupID) {
-    this.groupID = groupID;
+  public void setClusterLabel(int clusterLabel) {
+    this.clusterLabel = clusterLabel;
   }
 
   public void run(ArrayList<Boid> boids) {
@@ -102,18 +104,7 @@ class Boid {
     float theta = velocity.heading() + SketchBase.radians(90);
 
     sketch.fill(200, 100);
-
-    // TODO: this needs some work
-    if (groupID == 0) {
-      sketch.stroke(255, 0, 0);
-    } else if (groupID == 1) {
-      sketch.stroke(0, 255, 0);
-    } else if (groupID == 2) {
-      sketch.stroke(0, 0, 255);
-    } else {
-      sketch.stroke(255);
-    }
-
+    sketch.stroke(clusterColorsLUT[clusterLabel]);
     sketch.pushMatrix();
     sketch.translate(position.x, position.y);
     sketch.rotate(theta);
@@ -184,7 +175,8 @@ class Boid {
     PVector sum = new PVector(0, 0);
     int count = 0;
     for (Boid other : boids) {
-      if (other.groupID != groupID) {
+      // ignore boids in other clusters
+      if (other.clusterLabel != clusterLabel) {
         continue;
       }
       float d = PVector.dist(position, other.position);
@@ -218,7 +210,8 @@ class Boid {
     PVector sum = new PVector(0, 0); // Start with empty vector to accumulate all positions
     int count = 0;
     for (Boid other : boids) {
-      if (other.groupID != groupID) {
+      // ignore boids in other clusters
+      if (other.clusterLabel != clusterLabel) {
         continue;
       }
       float d = PVector.dist(position, other.position);

@@ -16,16 +16,28 @@ import py5.core.SketchBase;
 public class Example3Sketch extends SketchBase {
 
   protected Flock flock;
+  protected int[] clusterColorsLUT;
 
   public void settings() {
     size(640, 360);
   }
 
   public void setup() {
+    // the double cast in the next line is necessary because Python numbers
+    // are longs in Java but we want an int to initialize the array size
+    int clusterCount = (int) (long) callPython("cluster_count");
+    // initialize group color lookup table
+    // boids in the same cluster will have the same color
+    clusterColorsLUT = new int[clusterCount];
+    colorMode(SketchBase.HSB, 360, 100, 100);
+    for (int i = 0; i < clusterCount; i++) {
+      clusterColorsLUT[i] = color(random(360), 80, 80);
+    }
+
     flock = new Flock();
     // Add an initial set of boids into the system
     for (int i = 0; i < 150; i++) {
-      flock.addBoid(new Boid(this, this.random(width), this.random(height)));
+      flock.addBoid(new Boid(this, clusterColorsLUT, this.random(width), this.random(height)));
     }
     thread("runClustering");
   }
@@ -37,14 +49,14 @@ public class Example3Sketch extends SketchBase {
 
   // Add a new boid into the System
   public void mousePressed() {
-    flock.addBoid(new Boid(this, mouseX, mouseY));
+    flock.addBoid(new Boid(this, clusterColorsLUT, mouseX, mouseY));
   }
 
   public void runClustering() {
     while (true) {
       float[][] boidLocations = flock.getBoidLocations();
-      int[] boidGroupIds = (int[]) callPython("cluster_boids", (Object) boidLocations);
-      flock.setBoidGroupIds(boidGroupIds);
+      int[] boidClusterLabels = (int[]) callPython("cluster_boids", (Object) boidLocations);
+      flock.setBoidClusterLabels(boidClusterLabels);
       delay(1000);
     }
   }

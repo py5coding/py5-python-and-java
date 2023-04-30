@@ -31,9 +31,9 @@ class Flock {
     return boidsArray;
   }
 
-  public void setBoidGroupIds(int[] boidGroupIds) {
+  public void setBoidClusterLabels(int[] boidClusterLabels) {
     for (int i = 0; i < boids.size(); i++) {
-      boids.get(i).setGroupID(boidGroupIds[i]);
+      boids.get(i).setClusterLabel(boidClusterLabels[i]);
     }
   }
 
