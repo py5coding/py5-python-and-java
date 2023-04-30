@@ -7,4 +7,4 @@ temp/
 build/
 dist/
 target/
-# !*.jar
+!**/jars/*.jar
