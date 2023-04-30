@@ -1,10 +1,13 @@
 /**
  * Edge Detection Example
+ * Original Sketch from Processing's Topics/ImageProcessing/EdgeDetection Example code
+ * 
+ * In this adaptation of Processing's Edge Detection example, OpenCV is used to
+ * perform the edge detection. The edge detection mode can be changed by pressing
+ * 't' for tight, 'w' for wide, or any other key for auto.
  * 
  * Canny edge detection algorithm adapted from:
  * https://pyimagesearch.com/2015/04/06/zero-parameter-automatic-canny-edge-detection-with-python-and-opencv/
- * 
- * Press 't', 'w', or any other key to set the edge detection mode.
  */
 package test;
 
