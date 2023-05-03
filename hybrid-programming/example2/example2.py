@@ -5,19 +5,19 @@ import py5
 
 N = 100_000
 
-# create Direct Buffers
+# create points direct buffer and array
 points_buffer = jpype.nio.convertToDirectBuffer(bytearray(4 * N * 2)).asFloatBuffer()
-byte_buffer = jpype.nio.convertToDirectBuffer(bytearray(4 * N))
-colors_buffer = byte_buffer.asIntBuffer()
-
-# create numpy arrays backed by the Direct Buffers
-colors = np.asarray(byte_buffer).reshape(N, 4)
 points = np.asarray(points_buffer).reshape(N, 2)
 
+# create colors direct buffer and array
+color_byte_array = bytearray(4 * N)
+colors_buffer = jpype.nio.convertToDirectBuffer(color_byte_array).asIntBuffer()
+colors = np.asarray(color_byte_array).reshape(N, 4)
+
 # Note that the `colors_buffer` is like an array of 32 bit Integers, which is
-# how Processing stores color values. The `colors` array is an array of unsigned
-# integers ranging from 0 to 255. The third dimension of the `colors` array
-# stores the alpha, red, green, and blue color values, in that order.
+# how Processing stores color values. The `colors` numpy array is an array of
+# unsigned integers ranging from 0 to 255. The third dimension of the `colors`
+# array stores the alpha, red, green, and blue color values, in that order.
 
 def setup():
     py5.size(500, 500, py5.P2D)
