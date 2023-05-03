@@ -6,13 +6,14 @@ import py5
 N = 100_000
 
 # create points direct buffer and array
-points_buffer = jpype.nio.convertToDirectBuffer(bytearray(4 * N * 2)).asFloatBuffer()
+points_bytearray = bytearray(4 * N * 2)
+points_buffer = jpype.nio.convertToDirectBuffer(points_bytearray).asFloatBuffer()
 points = np.asarray(points_buffer).reshape(N, 2)
 
 # create colors direct buffer and array
-color_byte_array = bytearray(4 * N)
-colors_buffer = jpype.nio.convertToDirectBuffer(color_byte_array).asIntBuffer()
-colors = np.asarray(color_byte_array).reshape(N, 4)
+color_bytearray = bytearray(4 * N)
+colors_buffer = jpype.nio.convertToDirectBuffer(color_bytearray).asIntBuffer()
+colors = np.asarray(color_bytearray).reshape(N, 4)
 
 # Note that the `colors_buffer` is like an array of 32 bit Integers, which is
 # how Processing stores color values. The `colors` numpy array is an array of
