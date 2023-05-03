@@ -32,7 +32,7 @@ class Flock {
   }
 
   public void setBoidClusterLabels(int[] boidClusterLabels) {
-    for (int i = 0; i < boids.size(); i++) {
+    for (int i = 0; i < boidClusterLabels.length; i++) {
       boids.get(i).setClusterLabel(boidClusterLabels[i]);
     }
   }
