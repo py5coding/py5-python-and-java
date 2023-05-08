@@ -8,3 +8,4 @@ build/
 dist/
 target/
 !**/jars/*.jar
+!**/jars/**/*.jar
