@@ -33,7 +33,7 @@ class Boid {
     velocity = new PVector(SketchBase.cos(angle), SketchBase.sin(angle));
 
     position = new PVector(x, y);
-    r = 2.0f;
+    r = 5.0f;
     maxspeed = 2;
     maxforce = 0.03f;
   }

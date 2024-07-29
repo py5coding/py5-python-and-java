@@ -4,7 +4,7 @@ This repo contains example code for those looking to experiment with py5's Hybri
 
 ## What is py5?
 
-py5 is a version of [**Processing**][processing] for Python 3.8+. It makes the Java [**Processing**][processing] jars available to the CPython interpreter using [**JPype**][jpype]. It can do just about all of the 2D and 3D drawing [**Processing**][processing] can do, except with Python instead of Java code.
+py5 is a version of [**Processing**][processing] for Python 3.9+. It makes the Java [**Processing**][processing] jars available to the CPython interpreter using [**JPype**][jpype]. It can do just about all of the 2D and 3D drawing [**Processing**][processing] can do, except with Python instead of Java code.
 
 ## Hybrid Programming
 

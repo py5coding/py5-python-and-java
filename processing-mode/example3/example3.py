@@ -27,7 +27,7 @@ NUMBER_OF_CLUSTERS = 8
 cluster_centers = None
 
 
-def get_cluster_count():
+def cluster_count():
     # the number of clusters should be set in one place for both the Python and Java code
     return NUMBER_OF_CLUSTERS
 
@@ -47,8 +47,8 @@ def cluster_boids(boid_locations):
         return JClass('java.lang.RuntimeException')(str(e))
 
 
-py5_tools.register_processing_mode_key("cluster_boids", cluster_boids)
-py5_tools.register_processing_mode_key("cluster_count", get_cluster_count)
+# py5_tools.register_processing_mode_key("cluster_boids", cluster_boids)
+# py5_tools.register_processing_mode_key("cluster_count", cluster_count)
 
 
 # run the sketch in processing mode, specifying the Java class to instantiate

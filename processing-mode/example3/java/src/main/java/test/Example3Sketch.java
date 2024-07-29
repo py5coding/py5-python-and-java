@@ -25,7 +25,7 @@ public class Example3Sketch extends SketchBase {
   protected int[] clusterColorsLUT;
 
   public void settings() {
-    size(640, 360);
+    size(1024, 1024);
   }
 
   public void setup() {
@@ -50,11 +50,19 @@ public class Example3Sketch extends SketchBase {
     // because the clustering algorithm would slow down the draw() method and
     // reduce the frame rate to a crawl.
     thread("runClustering");
+
+    // frameRate(60);
   }
 
   public void draw() {
     background(50);
     flock.run();
+
+    // saveFrame("/tmp/frames/frame-####.png");
+
+    // if (frameCount > 60 * 60) {
+    //   exit();
+    // }
   }
 
   // Add a new boid into the System
@@ -67,6 +75,11 @@ public class Example3Sketch extends SketchBase {
       float[][] boidLocations = flock.getBoidLocations();
       int[] boidClusterLabels = (int[]) callPython("cluster_boids", (Object) boidLocations);
       flock.setBoidClusterLabels(boidClusterLabels);
+      // try {
+      //   Thread.sleep(100);
+      // } catch (InterruptedException e) {
+      //   e.printStackTrace();
+      // }
     }
   }
 
